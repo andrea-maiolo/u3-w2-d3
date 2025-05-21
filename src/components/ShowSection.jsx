@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { Row, Col, Image, Spinner, Alert } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 class ShowSection extends Component {
   state = {
@@ -53,6 +54,9 @@ class ShowSection extends Component {
               {this.state.showArray.slice(0, 6).map((movie) => (
                 <Col key={movie.imdbID} className="mb-2 text-center px-1">
                   <Image src={movie.Poster} alt={movie.Title} className="img-fluid w-100 poster-img" />
+                  <Link to={"/movie-detail/" + movie.imdbID} className="btn btn-dark d-block w-100">
+                    Vai al dettaglio
+                  </Link>
                 </Col>
               ))}
             </Row>

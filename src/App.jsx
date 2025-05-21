@@ -7,6 +7,7 @@ import PaginaProfilo from "./components/PaginaProfilo";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainSection from "./components/MainSection";
 import TvShows from "./components/TvShows";
+import MovieDetails from "./components/MovieDetails";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<MainSection />} />
           <Route path="/profile" element={<PaginaProfilo />} />
           <Route path="/tv-shows" element={<TvShows />} />
+          <Route path="/movie-detail/:movieId" element={<MovieDetails />} />
         </Routes>
         <Footer />
       </Container>
