@@ -1,9 +1,9 @@
 import { Component } from "react";
 import { Row, Col, Image, Spinner, Alert } from "react-bootstrap";
 
-class MoviesSection extends Component {
+class ShowSection extends Component {
   state = {
-    movieArray: [],
+    showArray: [],
     loaded: false,
     errore: false,
     erroreMess: "",
@@ -16,7 +16,7 @@ class MoviesSection extends Component {
 
   fetchMovies = async () => {
     try {
-      const response = await fetch(`https://www.omdbapi.com/?apikey=21e645cf&s=${this.props.query}`);
+      const response = await fetch(`https://www.omdbapi.com/?apikey=21e645cf&type=series&s=${this.props.query}`);
       const data = await response.json();
 
       if (data.Response === "False") {
@@ -25,13 +25,12 @@ class MoviesSection extends Component {
         this.setState({ loaded: !this.state.loaded });
       } else {
         this.setState({ loaded: !this.state.loaded });
-        this.setState({ movieArray: data.Search });
+        this.setState({ showArray: data.Search });
       }
     } catch (error) {
       console.error("Error fetching movies:", error);
     }
   };
-
   render() {
     return (
       <>
@@ -51,7 +50,7 @@ class MoviesSection extends Component {
           <>
             <h4 className="text-white mb-2">{this.props.title}</h4>
             <Row xs={1} sm={2} lg={4} xl={6} className="mb-4">
-              {this.state.movieArray.slice(0, 6).map((movie) => (
+              {this.state.showArray.slice(0, 6).map((movie) => (
                 <Col key={movie.imdbID} className="mb-2 text-center px-1">
                   <Image src={movie.Poster} alt={movie.Title} className="img-fluid w-100 poster-img" />
                 </Col>
@@ -64,4 +63,4 @@ class MoviesSection extends Component {
   }
 }
 
-export default MoviesSection;
+export default ShowSection;

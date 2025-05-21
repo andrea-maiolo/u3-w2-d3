@@ -1,5 +1,6 @@
 import { Navbar, Nav, Container, Image } from "react-bootstrap";
 import logo from "../assets/netflix_logo.png";
+import { NavLink } from "react-router-dom";
 
 const MyNavbar = () => {
   return (
@@ -11,21 +12,15 @@ const MyNavbar = () => {
         <Navbar.Toggle aria-controls="navbar-nav" />
         <Navbar.Collapse id="navbar-nav">
           <Nav className="me-auto navbar-nav mb-2 mb-lg-0">
-            <Nav.Link href="#" className="fw-bold active nav-text">
+            <NavLink to="/" className="nav-link">
               Home
-            </Nav.Link>
-            <Nav.Link href="#" className="fw-bold nav-text">
-              TV Shows
-            </Nav.Link>
-            <Nav.Link href="#" className="fw-bold nav-text">
-              Movies
-            </Nav.Link>
-            <Nav.Link href="#" className="fw-bold nav-text">
-              Recently Added
-            </Nav.Link>
-            <Nav.Link href="#" className="fw-bold nav-text">
-              My List
-            </Nav.Link>
+            </NavLink>
+            <NavLink to="/tv-shows" className="nav-link">
+              Tv Shows
+            </NavLink>
+            <NavLink to="/profile" className="nav-link">
+              Profile
+            </NavLink>
           </Nav>
           <div className="d-flex align-items-center text-white">
             <i className="bi bi-search ms-3 me-3 fs-6"></i>
